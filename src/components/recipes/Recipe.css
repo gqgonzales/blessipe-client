@@ -32,10 +32,10 @@
   }
   .recipe-entry {
     padding: 1rem;
-    border: 2px salmon dotted;
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* border: 2px salmon dotted; */
   }
 
   .description-field {

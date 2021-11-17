@@ -6,7 +6,7 @@ export const CountryProvider = (props) => {
   const [countries, setCountries] = useState([]);
 
   const getCountries = () => {
-    return fetch("http://localhost:8000/countries", {
+    return fetch("https://blessipe-api.herokuapp.com/countries", {
       headers: {
         Authorization: `Token ${localStorage.getItem("bt_token")}`,
       },

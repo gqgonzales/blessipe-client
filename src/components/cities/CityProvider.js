@@ -6,7 +6,7 @@ export const CityProvider = (props) => {
   const [cities, setCities] = useState([]);
 
   const getCities = () => {
-    return fetch("http://localhost:8000/cities", {
+    return fetch("https://blessipe-api.herokuapp.com/cities", {
       // Authentication is no longer needed to retrieve cities!
       // headers: {
       //   Authorization: `Token ${localStorage.getItem("bt_token")}`,

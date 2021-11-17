@@ -7,7 +7,7 @@ export const RecipeProvider = (props) => {
   // const [matchedRestaurants, setMatchedRestaurants] = useState([]);
 
   const getRecipes = () => {
-    return fetch("http://localhost:8000/recipes", {
+    return fetch("https://blessipe-api.herokuapp.com/recipes", {
       headers: {
         Authorization: `Token ${localStorage.getItem("bt_token")}`,
       },
@@ -17,7 +17,7 @@ export const RecipeProvider = (props) => {
   };
 
   const getRecipeById = (recipeId) => {
-    return fetch(`http://localhost:8000/recipes/${recipeId}`, {
+    return fetch(`https://blessipe-api.herokuapp.com/recipes/${recipeId}`, {
       headers: {
         Authorization: `Token ${localStorage.getItem("bt_token")}`,
       },
@@ -26,7 +26,7 @@ export const RecipeProvider = (props) => {
   };
 
   const createRecipe = (recipe) => {
-    return fetch("http://localhost:8000/recipes", {
+    return fetch("https://blessipe-api.herokuapp.com/recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const RecipeProvider = (props) => {
   };
 
   const editRecipe = (recipe) => {
-    return fetch(`http://localhost:8000/recipes/${recipe.id}`, {
+    return fetch(`https://blessipe-api.herokuapp.com/recipes/${recipe.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export const RecipeProvider = (props) => {
   };
 
   const deleteRecipe = (recipeId) => {
-    return fetch(`http://localhost:8000/recipes/${recipeId}`, {
+    return fetch(`https://blessipe-api.herokuapp.com/recipes/${recipeId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,7 @@ export const RecipeProvider = (props) => {
 
   const addRecipeKeyword = (recipeId, enteredKeyword) => {
     return fetch(
-      `http://localhost:8000/recipekeywords/${recipeId}/add_recipe_keyword`,
+      `https://blessipe-api.herokuapp.com/recipekeywords/${recipeId}/add_recipe_keyword`,
       {
         method: "POST",
         headers: {
@@ -78,15 +78,14 @@ export const RecipeProvider = (props) => {
 
   const findLocalRestaurants = (recipeId) => {
     return fetch(
-      `http://localhost:8000/recipes/${recipeId}/find_local_restaurants`,
+      `https://blessipe-api.herokuapp.com/recipes/${recipeId}/find_local_restaurants`,
       {
         headers: {
           Authorization: `Token ${localStorage.getItem("bt_token")}`,
         },
       }
-    )
-      .then((response) => response.json())
-      // .then(getRestaurants);
+    ).then((response) => response.json());
+    // .then(getRestaurants);
   };
 
   return (

@@ -6,7 +6,7 @@ export const RestaurantProvider = (props) => {
   const [restaurants, setRestaurants] = useState([]);
 
   const getRestaurants = () => {
-    return fetch("http://localhost:8000/restaurants", {
+    return fetch("https://blessipe-api.herokuapp.com/restaurants", {
       headers: {
         Authorization: `Token ${localStorage.getItem("bt_token")}`,
       },
@@ -16,15 +16,18 @@ export const RestaurantProvider = (props) => {
   };
 
   const getRestaurantById = (restaurant_id) => {
-    return fetch(`http://localhost:8000/restaurants/${restaurant_id}`, {
-      headers: {
-        Authorization: `Token ${localStorage.getItem("bt_token")}`,
-      },
-    }).then((response) => response.json());
+    return fetch(
+      `https://blessipe-api.herokuapp.com/restaurants/${restaurant_id}`,
+      {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("bt_token")}`,
+        },
+      }
+    ).then((response) => response.json());
   };
 
   const openRestaurant = (restaurant) => {
-    return fetch("http://localhost:8000/restaurants", {
+    return fetch("https://blessipe-api.herokuapp.com/restaurants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,29 +39,35 @@ export const RestaurantProvider = (props) => {
   };
 
   const editRestaurant = (restaurant) => {
-    return fetch(`http://localhost:8000/restaurants/${restaurant.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("bt_token")}`,
-      },
-      body: JSON.stringify(restaurant),
-    }).then(getRestaurants);
+    return fetch(
+      `https://blessipe-api.herokuapp.com/restaurants/${restaurant.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${localStorage.getItem("bt_token")}`,
+        },
+        body: JSON.stringify(restaurant),
+      }
+    ).then(getRestaurants);
   };
 
   const closeRestaurant = (restaurant_id) => {
-    return fetch(`http://localhost:8000/restaurants/${restaurant_id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("bt_token")}`,
-      },
-    }).then(getRestaurants);
+    return fetch(
+      `https://blessipe-api.herokuapp.com/restaurants/${restaurant_id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${localStorage.getItem("bt_token")}`,
+        },
+      }
+    ).then(getRestaurants);
   };
 
   const unfavoriteThisRestaurant = (restaurantId) => {
     return fetch(
-      `http://localhost:8000/restaurants/${restaurantId}/favorite_restaurant`,
+      `https://blessipe-api.herokuapp.com/restaurants/${restaurantId}/favorite_restaurant`,
       {
         method: "DELETE",
         headers: {
@@ -71,7 +80,7 @@ export const RestaurantProvider = (props) => {
 
   const favoriteThisRestaurant = (restaurantId) => {
     return fetch(
-      `http://localhost:8000/restaurants/${restaurantId}/favorite_restaurant`,
+      `https://blessipe-api.herokuapp.com/restaurants/${restaurantId}/favorite_restaurant`,
       {
         method: "POST",
         headers: {
